@@ -51,27 +51,32 @@ app.get('/api/tables/', function(req, res){
 
 
 // Create New Customers - takes in JSON input
-app.post('/api/tables/new', function(req, res){
+app.post('/api/new', function(req, res) {
+	if(customers.length < 5) {
+		app.post('/api/tables/new', function(req, res){
 
-	var newCustomer = req.body;
+			var newCustomer = req.body;
 
-	console.log(newCustomer);
+			console.log(newCustomer);
 
-	customers.push(newCustomer);
+			customers.push(newCustomer);
 
-	res.json(newCustomer);
+			res.json(newCustomer);
+		})
+	} else {
+		app.post('/api/waitlist/new', function(req, res){
+
+			var newCustomer = req.body;
+
+			console.log(newCustomer);
+
+			customers.push(newCustomer);
+
+			res.json(newCustomer);
+		})
+	}
 })
 
-app.post('/api/waitlist/new', function(req, res){
-
-	var newCustomer = req.body;
-
-	console.log(newCustomer);
-
-	customers.push(newCustomer);
-
-	res.json(newCustomer);
-})
 
 // Starts the server to begin listening 
 // =============================================================
