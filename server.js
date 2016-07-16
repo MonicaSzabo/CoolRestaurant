@@ -48,10 +48,8 @@ app.get('/reserveTable', function(req, res){
 })
 
 
-app.get('/api/new', function(req, res){
-	for (var i=0; i < customers.length; i++){
-		res.json(customers[i]);
-	}
+app.get('/api', function(req, res){
+	res.json([customers, waitList]);
 })
 
 
