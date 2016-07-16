@@ -15,7 +15,7 @@
 		<div class="jumbotron">
 			<h1>Cool Restaurant</h1>
 			<hr>
-			<a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make a Reservation</button></a>
+			<a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span>View Tables</button></a>
 		</div>
 		<div class="row">
 
@@ -74,7 +74,7 @@
 			};
 
 			// Question: What does this code do??
-			$.post( "http://localhost:3000/api/tables/new", newCustomer)
+			$.post("http://localhost:3000/api/new", newCustomer)
 				.done(function(data){
 					console.log(data);
 					alert("Adding reservation...")
