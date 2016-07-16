@@ -24,6 +24,13 @@ var customers = [{
 	customerID: "Hello"
 }];
 
+var waitList = [{
+	customerName: "WaitList",
+	phoneNumber: "5555555",
+	customerEmail: "example@example.com",
+	customerID: "WL"
+}];
+
 // Routes
 // =============================================================
 
@@ -41,40 +48,24 @@ app.get('/reserveTable', function(req, res){
 })
 
 
-app.get('/api/tables/', function(req, res){
-
+app.get('/api/new', function(req, res){
 	for (var i=0; i < customers.length; i++){
 		res.json(customers[i]);
-
 	}
 })
 
 
 // Create New Customers - takes in JSON input
 app.post('/api/new', function(req, res) {
+	var newCustomer = req.body;
+
 	if(customers.length < 5) {
-		app.post('/api/tables/new', function(req, res){
-
-			var newCustomer = req.body;
-
-			console.log(newCustomer);
-
-			customers.push(newCustomer);
-
-			res.json(newCustomer);
-		})
+		customers.push(newCustomer);
 	} else {
-		app.post('/api/waitlist/new', function(req, res){
-
-			var newCustomer = req.body;
-
-			console.log(newCustomer);
-
-			customers.push(newCustomer);
-
-			res.json(newCustomer);
-		})
+		waitList.push(newCustomer);
 	}
+
+	res.json(newCustomer);
 })
 
 
